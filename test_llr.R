@@ -1,4 +1,3 @@
-test_llr
 ##test_llr
 context("Check local linear regression function")
 library(testthat)

@@ -1,4 +1,3 @@
-llr_functions
 ##llr_functions
 
 llr <- function(x,y,z,omega){
