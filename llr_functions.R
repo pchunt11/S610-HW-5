@@ -5,10 +5,11 @@ llr <- function(x,y,z,omega){
   return(fits)
 }
 
+
 compute_f_hat <- function(z,x,y,omega){
-  Wz <- diag(make_weight_matrix(z,x,omega))
+  Wz <- as.array(diag(make_weight_matrix(z,x,omega)), ncol=1, nrow = length(x))
   X <- make_predictor_matrix(x)
-  f_hat = c(1,z) %*% solve(t(X) %*% apply(X, 2, "*", Wz)) %*% t(X) %*% sapply(y, "*", Wz)
+  f_hat = c(1,z) %*% solve(t(X) %*% apply(X, 2, "*", Wz)) %*% t(X) %*% (Wz*as.array(y,nrow=length(y)))
   return(f_hat)
 }
 
@@ -35,10 +36,4 @@ make_weight_matrix <- function(z,x,omega){
   Wz <- diag(w)
   return(Wz)
 }
-?rep
-n = 15
-## a very simple regression model
-x = rnorm(n)
-y = rnorm(x + rnorm(n))
-z = seq(-1, 1, length.out = 100)
-llr(x,y,z,1)
+
