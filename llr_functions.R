@@ -35,12 +35,6 @@ make_weight_matrix <- function(z,x,omega){
   Wz <- diag(w)
   return(Wz)
 }
-?rep
-n = 15
-## a very simple regression model
-x = rnorm(n)
-y = rnorm(x + rnorm(n))
-z = seq(-1, 1, length.out = 100)
-llr(x,y,z,1)
+
 
 
